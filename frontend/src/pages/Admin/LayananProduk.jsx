@@ -90,14 +90,14 @@ const LayananProduk = () => {
                     <div className="relative">
                         <input
                             type="text"
-                            placeholder="Search produk/layanan..."
+                            placeholder="Cari produk/layanan..."
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             className="pl-10 pr-4 py-2.5 h-10 border rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-[#27D14C]"
                         />
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+                            className="h-6 w-6 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -127,21 +127,50 @@ const LayananProduk = () => {
                 </div>
             </div>
 
-            {/* Tabs */}
-            <div className="flex gap-3 mb-8">
-                {["Layanan", "Produk"].map((tab) => (
-                    <button
-                        key={tab}
-                        onClick={() => setActiveTab(tab)}
-                        className={`px-6 py-2 rounded-full font-semibold shadow-sm transition ${activeTab === tab
-                            ? "bg-[#27D14C] text-white"
-                            : "bg-white text-gray-600 border hover:bg-gray-50"
-                            }`}
-                    >
-                        {tab}
+
+
+            {/*  */}
+            <div className="flex justify-between items-center mb-8">
+                {/* Bagian Tabs */}
+                <div className="flex gap-3">
+                    {["Layanan", "Produk"].map((tab) => (
+                        <button
+                            key={tab}
+                            onClick={() => setActiveTab(tab)}
+                            className={`px-6 py-2 rounded-full font-semibold shadow-sm transition ${activeTab === tab
+                                ? "bg-[#27D14C] text-white"
+                                : "bg-white text-gray-600 border hover:bg-gray-50"
+                                }`}
+                        >
+                            {tab}
+                        </button>
+                    ))}
+                </div>
+
+
+                {/* Tombol Tambah Proyek */}
+                <div className="flex justify-end mb-8">
+                    <button className="flex items-center gap-2 px-3 py-2 bg-[#1E293B] text-white rounded-lg hover:bg-[#111827] transition">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-4 w-4"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M12 4v16m8-8H4"
+                            />
+                        </svg>
+                        Tambah Proyek
                     </button>
-                ))}
+                </div>
             </div>
+
+
 
             {/* Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -161,10 +190,10 @@ const LayananProduk = () => {
                                     />
                                 </div>
                                 <div className="flex gap-2 text-gray-400">
-                                    <button className="hover:text-[#27D14C]">
+                                    <button className="text-[#27D14C] hover:text-green-600">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
-                                            className="h-5 w-5"
+                                            className="h-6 w-6"
                                             fill="none"
                                             viewBox="0 0 24 24"
                                             stroke="currentColor"
@@ -177,10 +206,10 @@ const LayananProduk = () => {
                                             />
                                         </svg>
                                     </button>
-                                    <button className="hover:text-red-500">
+                                    <button className="text-red-500 hover:text-red-600 transition">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
-                                            className="h-5 w-5"
+                                            className="h-6 w-6"
                                             fill="none"
                                             viewBox="0 0 24 24"
                                             stroke="currentColor"
@@ -214,11 +243,11 @@ const LayananProduk = () => {
                             className="bg-white rounded-xl p-5 shadow hover:shadow-lg transition relative"
                         >
                             {/* Tombol Edit & Delete */}
-                            <div className="absolute top-6 right-3 flex gap-2 text-gray-400">
-                                <button className="hover:text-[#27D14C]">
+                            <div className="absolute top-6 right-6 flex gap-2 text-gray-400">
+                                <button className="text-[#27D14C] hover:text-green-600">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        className="h-5 w-5"
+                                        className="h-6 w-6"
                                         fill="none"
                                         viewBox="0 0 24 24"
                                         stroke="currentColor"
@@ -231,10 +260,10 @@ const LayananProduk = () => {
                                         />
                                     </svg>
                                 </button>
-                                <button className="hover:text-red-500">
+                                <button className="text-red-500 hover:text-red-600 transition">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        className="h-5 w-5"
+                                        className="h-6 w-6"
                                         fill="none"
                                         viewBox="0 0 24 24"
                                         stroke="currentColor"
