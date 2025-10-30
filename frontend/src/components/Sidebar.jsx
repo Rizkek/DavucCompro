@@ -8,7 +8,7 @@ const Sidebar = () => {
   const menuItems = [
     {
       name: "Dashboard",
-      path: "/admin/dashboard",
+      path: "/dashboardadmin",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -28,7 +28,7 @@ const Sidebar = () => {
     },
     {
       name: "Layanan & Produk",
-      path: "/admin/layanan-produk",
+      path: "/LayananProduk",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +48,7 @@ const Sidebar = () => {
     },
     {
       name: "Proyek",
-      path: "/admin/proyek",
+      path: "/Proyek",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -68,7 +68,7 @@ const Sidebar = () => {
     },
     {
       name: "Perusahaan",
-      path: "/admin/perusahaan",
+      path: "/perusahaan",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -90,7 +90,7 @@ const Sidebar = () => {
 
   const handleLogout = () => {
     console.log("Logout");
-    // Tambahkan logika logout di sini (hapus token, redirect ke login, dll)
+    // tambahkan logika logout nanti, misal hapus token & redirect
   };
 
   return (
@@ -101,9 +101,10 @@ const Sidebar = () => {
       </div>
 
       {/* Menu Items */}
-      <nav className="flex-1 p-4">
+      <nav className="flex-1 p-4 overflow-y-auto">
         {menuItems.map((item, index) => {
           const isActive = location.pathname === item.path;
+
           return (
             <Link
               key={index}

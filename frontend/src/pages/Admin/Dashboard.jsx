@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 
-
 const DashboardAdmin = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [kategoriFilter, setKategoriFilter] = useState("Semua Kategori");
   const [aksiFilter, setAksiFilter] = useState("Semua Aksi");
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [selectedFilter, setSelectedFilter] = useState("Keseluruhan");
 
   // Data statistik
   const stats = [
@@ -37,60 +38,32 @@ const DashboardAdmin = () => {
     },
   ];
 
+  // Dropdown options
+  const dropdownOptions = ["Keseluruhan", "Tahun Ini", "Bulan Ini"];
+
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
+    <div className="min-h-screen bg-[#F5F7FB] px-10 py-8 font-medium font-['Poppins']">
       {/* Header */}
-      <div className="flex justify-between items-start mb-8">
+      <div className="flex justify-between items-center mb-8">
         <div>
           <h1 className="text-3xl font-bold text-gray-800 font-['Poppins'] mb-2">
             Dashboard Overview
           </h1>
-          <p className="text-gray-600 font-['Poppins']">
+          <p className="text-gray-600 font-medium font-['Poppins']">
             Selamat datang di dashboard manajemen
           </p>
         </div>
 
         <div className="flex items-center gap-4">
           {/* Dropdown Keseluruhan */}
-          <button className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-sm border font-['Poppins'] text-gray-700 hover:bg-gray-50">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+          <div className="relative">
+            <button
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-sm border font-['Poppins'] text-gray-700 hover:bg-gray-50"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"
-              />
-            </svg>
-            Keseluruhan
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
-          </button>
-
-          {/* User Profile */}
-          <div className="flex items-center gap-2">
-            <span className="font-['Poppins'] text-gray-700">Hi, SuperAdmin</span>
-            <div className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-white"
+                className="h-5 w-5"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -99,11 +72,59 @@ const DashboardAdmin = () => {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2}
-                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                  d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"
                 />
               </svg>
+
+              {selectedFilter}
+
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className={`h-4 w-4 transition-transform duration-200 ${isDropdownOpen ? "rotate-180" : ""
+                  }`}
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+
+            {/* Dropdown Menu */}
+            {isDropdownOpen && (
+              <div className="absolute right-0 mt-2 w-40 bg-white border rounded-lg shadow-lg z-10">
+                {dropdownOptions.map((option) => (
+                  <button
+                    key={option}
+                    onClick={() => {
+                      setSelectedFilter(option);
+                      setIsDropdownOpen(false);
+                    }}
+                    className={`block w-full text-left px-4 py-2 text-sm font-['Poppins'] hover:bg-gray-100 ${selectedFilter === option
+                        ? "text-[#27D14C] font-semibold"
+                        : "text-gray-700"
+                      }`}
+                  >
+                    {option}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* User Profile */}
+          <div className="flex items-center gap-2">
+            <span className="text-gray-700">Hi, Admin</span>
+            <div className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-white font-bold">
+              A
             </div>
           </div>
+
 
           {/* Register Admin Button */}
           <button className="px-6 py-2 bg-[#27D14C] text-white font-semibold font-['Poppins'] rounded-lg hover:bg-[#20b93f] transition shadow-md">
