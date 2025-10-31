@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from 'react-router-dom'; 
+import { Link, useLocation } from 'react-router-dom'; 
 import { Menu, X, ChevronDown } from 'lucide-react'; 
 import Logo from '../assets/Logo.png';
 
@@ -7,13 +7,13 @@ function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [isLangOpen, setIsLangOpen] = useState(false);
     const [currentLang, setCurrentLang] = useState('ID');
-
+    const location = useLocation();
     const navItems = [
-        { name: "Beranda", path: "/", active: true },
-        { name: "Layanan & Produk", path: "/layanan", active: false },
-        { name: "Proyek", path: "/proyek", active: false },
-        { name: "Tentang Kami", path: "/tentang", active: false },
-        { name: "Kontak", path: "/kontak", active: false },
+        { name: "Beranda", path: "/"},
+        { name: "Layanan & Produk", path: "/layanan" },
+        { name: "Proyek", path: "/proyek"},
+        { name: "Tentang Kami", path: "/tentang"},
+        { name: "Kontak", path: "/contact"},
     ];
     
     // ubah language
@@ -39,8 +39,9 @@ function Navbar() {
                             key={item.name}
                             to={item.path} 
                             className={`text-center leading-6 transition-colors duration-200 ${
-                                item.active ? 'text-lime-600' : 'text-zinc-800 hover:text-lime-600'
-                            }`}
+                                location.pathname === item.path? "text-lime-600"
+                                : "text-zinc-800 hover:text-lime-600"
+                    }`}
                         >
                             {item.name}
                         </Link>

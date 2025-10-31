@@ -2,7 +2,11 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
 import Home from './pages/User/Home.jsx';
 import Navbar from './components/navbar.jsx';
-import Footer from './components/Footer.jsx'; 
+import Footer from './components/Footer.jsx';
+import ContactSection from './pages/User/Contact.jsx'; 
+import AboutMe from './pages/User/TentangKami.jsx';
+import HasilProject from './pages/User/Proyek.jsx';
+import Service from './pages/User/LayananProduk.jsx';
 
 //admin
 import Login from './pages/Admin/LoginAdmin.jsx';
@@ -40,7 +44,7 @@ function App() {
         <Route path="/LayananProduk" element={<AdminLayout>
               <LayananProduk />
             </AdminLayout>} />
-        <Route path="/Proyek" element={<AdminLayout>
+        <Route path="/ProyekAdmin" element={<AdminLayout>
               <Proyek />
             </AdminLayout>} />
         <Route path="/Perusahaan" element={<AdminLayout>
@@ -52,6 +56,46 @@ function App() {
             <>
               <Navbar />
               <Home />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+           <>
+              <Navbar />
+              <ContactSection />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/tentang"
+          element= {
+            <>
+              <Navbar />
+              <AboutMe />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/proyek"
+          element= {
+            <>
+              <Navbar />
+              <HasilProject />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/layanan"
+          element= {
+            <>
+              <Navbar />
+              <Service />
               <Footer />
             </>
           }
