@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react'; 
 import {FaWhatsapp} from 'react-icons/fa';
 import { Assets } from '../../assets';
+import { motion } from 'framer-motion';
 // layanan card
 const servicesData = [
     { title: 'Management Consulting', icon: Assets.Icon1 },
@@ -23,14 +24,13 @@ const statsData = [
 export default function Home() {
     return (
         <main className="w-full">
-            <div className="max-w-[1440px] mx-auto">
-                
+            <div className="max-w-[1440px] mx-auto"> 
                 {/* Hero Section */}
                 <section className="pt-24 pb-16 px-6 md:px-20 relative overflow-hidden bg-gray-100 md:bg-white">
                     <div className="flex flex-col md:flex-row items-center justify-between gap-12">
                         <div className="w-full md:w-1/2 flex flex-col justify-start items-start gap-8 z-10">
-                            <div className="flex flex-col justify-start items-start gap-4">
-                                <p className="text-lime-500 text-xl font-medium font-['Poppins']">
+                            <div className="flex flex-col justify-start items-start gap-8">
+                                <p className="text-lime-500 text-xl font-medium font-['Poppins'] mt-20">
                                     PT Divus Global Mediacomm
                                 </p>
                                 <h1 className="text-zinc-800 text-4xl lg:text-5xl font-semibold font-['Poppins'] leading-tight">
@@ -51,11 +51,25 @@ export default function Home() {
                         </div>
                         
                         {/* Gambar hero */}
-                        <div className="w-full md:w-1/2 relative min-h-[400px]">
-                            <div className="relative w-full h-full">
-                                <img className="w-4/5 h-auto rounded-xl shadow-lg absolute top-0 left-0" src={Assets.Hero1} alt="Gambar Latar" />
-                                <img className="w-3/5 h-auto rounded-2xl shadow-2xl absolute top-0 right-0 z-10" src={Assets.Hero2} alt="Gambar Tampilan Tengah" />
-                                <img className="w-1/2 h-auto rounded-2xl  absolute bottom-0 left-10 z-20" src={Assets.Hero3} alt="Gambar Fokus" />
+                        <div className="w-full md:w-1/2 relative flex justify-center items-center">
+                            <div className="relative w-[550px] h-[480px]">
+                                <img
+                                    className="absolute top-[80px] left-16 w-[450px] h-[320px] rounded-2xl  object-cover"
+                                    src={Assets.Hero3}
+                                    alt="Gambar Latar"
+                                />
+
+                                <img
+                                    className="absolute top-1 left-5 w-[720px] h-[680px] rounded-2xl  object-cover"
+                                    src={Assets.Hero1}
+                                    alt="Gambar Tengah"
+                                />
+
+                                <img
+                                    className="absolute top-[100px] right-24 w-[550px] h-[470px] rounded-2xl object-cover"
+                                    src={Assets.Hero2}
+                                    alt="Gambar Depan"
+                                />
                             </div>
                         </div>
                     </div>
@@ -69,8 +83,8 @@ export default function Home() {
                             Dipercaya <br/>Oleh Mitra Internasional
                         </h2>
                         <div className="flex flex-wrap justify-center lg:justify-end items-center gap-10 md:gap-40 w-full lg:w-auto">
-                            <img className="w-40 h-auto" src={Assets.Mitra1} alt="Mitra A" />
-                            <img className="w-40 h-auto" src={Assets.Mitra2} alt="Mitra B" />
+                            <img className="w-40 h-auto" src={Assets.Client12} alt="Mitra A" />
+                            <img className="w-40 h-auto" src={Assets.Client13} alt="Mitra B" />
                         </div>
                     </div>
                     
@@ -107,17 +121,17 @@ export default function Home() {
                             <h3 className="text-center text-white text-3xl lg:text-4xl font-semibold font-['Poppins'] leading-tight mb-8">
                                 Layanan Kami
                             </h3>
-                            <div className="flex flex-wrap justify-center gap-6 lg:gap-10">
+                            <div className="flex flex-nowrap justify-between gap-6 px-4">
                                 {servicesData.map((item, index) => (
                                     <ServiceCard key={index} title={item.title} icon={item.icon} />
                                 ))}
-                            </div>
-                            <div className="text-center mt-8">
+                            </div> 
+                            <div className="text-left mt-8">
                                 <Link 
                                     to="/layanan" 
-                                    className="inline-flex items-center bg-white rounded-md px-5 py-2 hover:bg-gray-100 transition-colors"
+                                    className="ml-4 inline-flex items-center bg-white rounded-md px-5 py-2 hover:bg-gray-100 transition-colors"
                                 >
-                                    <span className="text-zinc-800 text-sm font-medium font-['Poppins'] capitalize mr-1">
+                                    <span className="justify-start text-zinc-800 text-sm text-center font-medium font-['Poppins'] capitalize mr-1 ">
                                         Lihat Selengkapnya
                                     </span>
                                     <ChevronRight size={16} className="text-zinc-800" />
@@ -136,53 +150,52 @@ export default function Home() {
                 </section>
 
                 {/* Client */}
-                <section className="px-6 md:px-20 py-16">
-                    <h2 className="text-center text-zinc-800 text-4xl font-semibold font-['Poppins'] leading-[48px] mb-12">
+                <section className="bg-white relative overflow-hidden border-t border-gray-100">
+                     <h2 className="text-center text-zinc-800 text-4xl font-semibold font-['Poppins'] leading-[48px] mb-8">
                         Klien Kami
                     </h2>
-                    
-                    {/* Baris 1 Klien */}
-                    <ClientRow images={[
-                        Assets.Client1, 
-                        Assets.Client2, 
-                        Assets.Client3, 
-                        Assets.Client4, 
-                        Assets.Client5
-                    ]} />
-                    
-                    {/* Baris 2 Klien */}
-                    <ClientRow images={[
-                        Assets.Client6, 
-                        Assets.Client7, 
-                        Assets.Client8, 
-                        Assets.Client9, 
-                        Assets.Client10
-                    ]} className="mt-10" />
-
-                    {/* Baris 3 Klien */}
-                    <ClientRow images={[
-                        Assets.Client11, 
-                        Assets.Mitra1, 
-                        Assets.Mitra2
-                    ]} className="mt-10 justify-center" />
+                    <div className="relative h-48 overflow-hidden">
+                        <motion.div
+                            className="absolute flex items-center gap-16 w-max"
+                            animate={{ x: ["0%", "-50%"], rotate: [0, 0, 0] }}
+                            transition={{ repeat: Infinity, duration: 45, ease: "linear" }}
+                        >
+                            {Array(2)
+                            .fill([Assets.Client1,
+                                Assets.Client2,
+                                Assets.Client3, 
+                                Assets.Client4, 
+                                Assets.Client5, 
+                                Assets.Client6,
+                                Assets.Client7,
+                                Assets.Client8,
+                                Assets.Client9,
+                                Assets.Client10,
+                                Assets.Client11,
+                                Assets.Client12,
+                                Assets.Client13
+                            ])
+                            .flat()
+                            .map((ImgClnt, i) => (
+                                <motion.img
+                                key={i}
+                                src={ImgClnt}
+                                alt="Client Logo"
+                                className="h-32 w-32 opacity-70 hover:opacity-100 transition-transform duration-300 hover:scale-110"
+                                style={{transform : 'rotate(0deg)'}}
+                                />
+                            ))}
+                        </motion.div>
+                    </div>
                 </section>
-
             </div>
         </main>
     );
 }
 // Kartu Layanan
 const ServiceCard = ({ title, icon }) => {
-    const formattedTitle = title.split(' ').map((word, i, arr) => (
-        <React.Fragment key={i}>
-            {word}
-            {i < arr.length - 1 && title !== 'Product & Services Knowledge' && <br />}
-            {i < arr.length - 1 && title === 'Product & Services Knowledge' && ' '}
-        </React.Fragment>
-    ));
-
     return (
-        <div className="w-48 h-56 p-4 bg-white rounded-tr-3xl rounded-bl-3xl flex flex-col justify-center items-center shadow-lg transition-transform hover:scale-105">
+        <div className="w-52 h-52 p-4 bg-white rounded-tr-3xl rounded-bl-3xl flex flex-col justify-center items-center shadow-lg transition-transform hover:scale-105">
             <div className="w-full flex flex-col justify-center items-center gap-3">
                 <img 
                     src={icon} 
@@ -190,8 +203,8 @@ const ServiceCard = ({ title, icon }) => {
                     className="w-20 h-20 object-contain mb-2"
                 />
                 
-                <div className="self-stretch text-center text-zinc-800 text-sm font-semibold font-['Poppins'] leading-5 mt-2">
-                    {formattedTitle}
+                <div className=" text-center text-zinc-800 text-sm font-semibold font-['Poppins'] eading-snug px-2 break-words whitespace-normal">
+                    {title}
                 </div>
             </div>
         </div>
@@ -211,19 +224,5 @@ const StatItem = ({ value, label }) => (
         <div className="text-center text-white text-xl md:text-2xl font-semibold font-['Poppins'] leading-8 mt-1">
             {label}
         </div>
-    </div>
-);
-
-const ClientRow = ({ images, className = '' }) => (
-    <div className={`w-full flex flex-wrap justify-between items-center gap-6 md:gap-10 ${className}`}>
-        {images.map((src, index) => (
-            <img 
-                key={index} 
-                className="w-24 md:w-32 h-auto object-contain transition-opacity hover:opacity-75" 
-                src={src} 
-                alt={`Klien ${index + 1}`} 
-                onError={(e) => { e.target.onerror = null; e.target.src=`https://placehold.co/${e.target.className.match(/w-(\d+)/)?.[1] || 100}x50?text=Logo` }}
-            />
-        ))}
     </div>
 );
