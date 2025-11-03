@@ -24,6 +24,7 @@ import Client10 from './Client10.png'
 import Client11 from './Client11.png'
 import Client12 from './Client12.png'
 import Client13 from './Client13.png'
+import Logo from './Logo.png'  // Make sure your logo file is named logo.png
 
 export const Assets = {
     
@@ -58,5 +59,6 @@ export const Assets = {
     Client10,
     Client11,
     Client12,
-    Client13
+    Client13,
+    Logo
 };

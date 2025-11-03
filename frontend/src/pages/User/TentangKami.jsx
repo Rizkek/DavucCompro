@@ -44,7 +44,7 @@ export default function About() {
                         <img 
                             src={Assets.Logo} 
                             alt="Gambar Profil Perusahaan"
-                            className="w-full max-w-lg rounded-xl shadow-xl object-cover"
+                            className="w-[320px] object-contain"
                         />
                     </div>
                     <div className="w-full lg:w-3/5">
@@ -59,7 +59,7 @@ export default function About() {
             </section>
 
             {/* CTA Download */}
-            <section className="max-w-[1440px] mx-auto px-6 md:px-20 pb-16 relative -mt-12">
+            <section className="max-w-[1440px] mx-auto px-6 md:px-20 py-20">
                 <div className="w-full bg-zinc-900 rounded-tr-2xl rounded-bl-2xl p-8 md:p-11 shadow-2xl">
                     <div className="flex flex-col md:flex-row justify-between items-center gap-6">
                 

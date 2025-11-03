@@ -54,26 +54,27 @@ export default function Home() {
                         <div className="w-full md:w-1/2 relative flex justify-center items-center">
                             <div className="relative w-[550px] h-[480px]">
                                 <img
-                                    className="absolute top-[80px] left-16 w-[450px] h-[320px] rounded-2xl  object-cover"
+                                    className="absolute top-[185px] left-16 w-[490px] h-[360px] rounded-2xl object-cover"
                                     src={Assets.Hero3}
                                     alt="Gambar Latar"
                                 />
 
                                 <img
-                                    className="absolute top-1 left-5 w-[720px] h-[680px] rounded-2xl  object-cover"
+                                    className="absolute top-[50px] left-5 w-[900px] h-[860px] rounded-2xl object-cover"
                                     src={Assets.Hero1}
                                     alt="Gambar Tengah"
                                 />
 
                                 <img
-                                    className="absolute top-[100px] right-24 w-[550px] h-[470px] rounded-2xl object-cover"
+                                    className="absolute top-[160px] right-24 w-[700px] h-[620px] rounded-2xl object-cover"
                                     src={Assets.Hero2}
                                     alt="Gambar Depan"
                                 />
                             </div>
                         </div>
                     </div>
-                    <div className="hidden md:block absolute top-[120px] left-0 w-full h-[677px] opacity-10 bg-gray-100 z-0"></div>
+                    <div className="hidden absolute top-[120px] left-0 w-full h-[677px] opacity-10 bg-gray-100 z-0"></div>
+                    
                 </section>
 
                 {/* Mitra & CTA Bar */}
