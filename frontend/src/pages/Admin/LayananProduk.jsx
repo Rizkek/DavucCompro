@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Assets } from '../../assets';
 import FormTambahProduk from "../../components/Forms/FormTambahProduk";
 import FormEditProduk from "../../components/Forms/FormEditProduk";
-// import FormTambahLayanan from "../../components/Forms/FormTambahLayanan";
 import FormEditLayanan from "../../components/Forms/FormEditLayanan";
 import PopupHapus from "../../components/Forms/PopupHapus";
 import PopupBD from "../../components/Forms/PopupBD";
@@ -10,7 +9,6 @@ import PopupBD from "../../components/Forms/PopupBD";
 const LayananProduk = () => {
     const [activeTab, setActiveTab] = useState("Layanan");
     const [searchQuery, setSearchQuery] = useState("");
-    // const [showTambahLayanan, setShowTambahLayanan] = useState(false);
     const [showTambahProduk, setShowTambahProduk] = useState(false);
     const [showEditProduk, setShowEditProduk] = useState(false);
     const [showEditLayanan, setShowEditLayanan] = useState(false);
@@ -19,6 +17,16 @@ const LayananProduk = () => {
     const [showBerhasil, setShowBerhasil] = useState(false);
     const [selectedName, setSelectedName] = useState("");
 
+    // FILTER TAB PRODUK
+    const [selectedFilters, setSelectedFilters] = useState([]);
+
+    const filterOptions = [
+        "Semua Produk",
+        "Research & Survey",
+        "Corporate ID",
+        "Product & Services Knowledge",
+        "Report & Journal",
+    ];
 
     const data = {
         Layanan: [
@@ -58,6 +66,7 @@ const LayananProduk = () => {
                 nama: "Aplikasi Analisis Data",
                 mitra: "PT DataTech Indonesia",
                 tahun: "2024",
+                kategori: "Research & Survey",
                 deskripsi:
                     "Aplikasi berbasis web untuk membantu perusahaan menganalisis data penjualan dan performa bisnis secara interaktif.",
                 gambar: Assets.Produk1,
@@ -66,6 +75,7 @@ const LayananProduk = () => {
                 nama: "Smart Marketing Tools",
                 mitra: "CV DigitalMedia",
                 tahun: "2023",
+                kategori: "Product & Services Knowledge",
                 deskripsi:
                     "Platform digital untuk membantu tim marketing mengelola kampanye, analisis audiens, dan pelacakan performa iklan.",
                 gambar: Assets.Produk2,
@@ -74,6 +84,7 @@ const LayananProduk = () => {
                 nama: "Sistem Pelayanan Publik",
                 mitra: "Dinas Kominfo",
                 tahun: "2025",
+                kategori: "Corporate ID",
                 deskripsi:
                     "Sistem manajemen layanan publik berbasis web yang mempermudah masyarakat dalam mengakses layanan pemerintahan.",
                 gambar: Assets.Produk3,
@@ -81,14 +92,20 @@ const LayananProduk = () => {
         ],
     };
 
-    const filteredData = data[activeTab].filter((item) =>
-        (item.title || item.nama)
-            ?.toLowerCase()
-            .includes(searchQuery.toLowerCase())
-    );
+    // ✅ FIX FILTER: hanya 1 filteredData
+    const filteredData = data[activeTab].filter((item) => {
+        const matchSearch = (item.title || item.nama)?.toLowerCase().includes(searchQuery.toLowerCase());
+
+        if (activeTab === "Produk" && selectedFilters.length > 0 && !selectedFilters.includes("Semua Produk")) {
+            return matchSearch && selectedFilters.includes(item.kategori);
+        }
+
+        return matchSearch;
+    });
 
     return (
         <div className="min-h-screen bg-[#F5F7FB] px-10 py-8 font-medium font-['Poppins']">
+
             {/* Header */}
             <div className="flex justify-between items-center mb-9">
                 <div>
@@ -126,7 +143,7 @@ const LayananProduk = () => {
                         </svg>
                     </div>
 
-                    {/* User Profile */}
+                    {/* User */}
                     <div className="flex items-center gap-2">
                         <span className="text-gray-700">Hi, Admin</span>
                         <div className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-white font-bold">
@@ -134,8 +151,7 @@ const LayananProduk = () => {
                         </div>
                     </div>
 
-                    {/* Register Admin Button */}
-                    <button className="px-6 py-2 bg-[#27D14C] text-white font-semibold font-['Poppins'] rounded-lg hover:bg-[#20b93f] transition shadow-md">
+                    <button className="px-6 py-2 bg-[#27D14C] text-white font-semibold rounded-lg hover:bg-[#20b93f] transition shadow-md">
                         Register Admin
                     </button>
                 </div>
@@ -147,7 +163,10 @@ const LayananProduk = () => {
                     {["Layanan", "Produk"].map((tab) => (
                         <button
                             key={tab}
-                            onClick={() => setActiveTab(tab)}
+                            onClick={() => {
+                                setActiveTab(tab);
+                                setSelectedFilters([]); // reset filter saat pindah tab
+                            }}
                             className={`px-6 py-2 rounded-full font-semibold shadow-sm transition ${activeTab === tab
                                 ? "bg-[#27D14C] text-white"
                                 : "bg-white text-gray-600 border hover:bg-gray-50"
@@ -158,42 +177,54 @@ const LayananProduk = () => {
                     ))}
                 </div>
 
-                {/* Tombol Tambah */}
-                <div className="flex justify-end mb-8 mt-5">
-                    <button
-                        onClick={() => {
-                            // if (activeTab === "Layanan") {
-                            //     setShowTambahLayanan(true);
-                            // } else {
-                                setShowTambahProduk(true);
-                            // }
-                        }}
-                        className="flex items-center gap-2 px-3 py-2 bg-[#1E293B] text-white rounded-lg hover:bg-[#111827] transition"
-                    >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-4 w-4"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M12 4v16m8-8H4"
-                            />
-                        </svg>
-                        {/* {activeTab === "Layanan" ? "Tambah Layanan" : "Tambah Produk"} */}
-                        Tambah Produk
-                    </button>
-                </div>
+                <button
+                    onClick={() => setShowTambahProduk(true)}
+                    className="flex items-center gap-2 px-3 py-2 bg-[#1E293B] text-white rounded-lg hover:bg-[#111827] transition"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                    </svg>
+                    Tambah Produk
+                </button>
             </div>
+
+            {/* ✅ FILTER Kategori hanya muncul saat TAB PRODUK */}
+            {activeTab === "Produk" && (
+                <div className="flex flex-wrap gap-3 mb-6">
+                    {filterOptions.map((filter) => {
+                        const isActive = selectedFilters.includes(filter);
+                        return (
+                            <button
+                                key={filter}
+                                onClick={() => {
+                                    if (filter === "Semua Produk") {
+                                        setSelectedFilters(["Semua Produk"]);
+                                    } else {
+                                        setSelectedFilters((prev) =>
+                                            prev.includes(filter)
+                                                ? prev.filter((f) => f !== filter)
+                                                : [...prev.filter((f) => f !== "Semua Produk"), filter]
+                                        );
+                                    }
+                                }}
+                                className={`px-6 py-2 rounded-full font-semibold border transition ${isActive
+                                        ? "bg-[#27D14C] text-white shadow"
+                                        : "bg-white text-gray-600 hover:bg-gray-50"
+                                    }`}
+                            >
+                                {filter}
+                            </button>
+                        );
+                    })}
+                </div>
+            )}
 
             {/* Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {activeTab === "Layanan"
-                    ? filteredData.map((item, idx) => (
+
+                {/* Layanan */}
+                {activeTab === "Layanan" &&
+                    filteredData.map((item, idx) => (
                         <div key={idx} className="bg-white rounded-xl p-6 shadow hover:shadow-lg transition">
                             <div className="flex items-start justify-between mb-3">
                                 <div className="w-20 h-20 flex items-center justify-center bg-[#E7F4D4] rounded-tr-3xl rounded-bl-3xl">
@@ -208,7 +239,7 @@ const LayananProduk = () => {
                                     <button
                                         className="text-red-500 hover:text-red-600 transition"
                                         onClick={() => {
-                                            setSelectedName(item.nama);
+                                            setSelectedName(item.title);
                                             setShowHapus(true);
                                         }}
                                     >
@@ -225,8 +256,10 @@ const LayananProduk = () => {
                                 ))}
                             </ul>
                         </div>
-                    ))
-                    :
+                    ))}
+
+                {/* Produk */}
+                {activeTab === "Produk" &&
                     filteredData.map((item, idx) => (
                         <div key={idx} className="bg-white rounded-xl p-5 shadow hover:shadow-lg transition relative">
                             <div className="absolute top-6 right-6 flex gap-2 text-gray-400">
@@ -263,57 +296,36 @@ const LayananProduk = () => {
                     ))}
             </div>
 
-            {/* Pop-up Tambah Layanan */}
-            {/* {showTambahLayanan && (
-                <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
-                    <div className="bg-white rounded-xl shadow-lg p-6 w-[500px] relative">
-                        <button
-                            onClick={() => setShowTambahLayanan(false)}
-                            className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
-                        >
-                            ✕
-                        </button>
-                        <FormTambahLayanan onClose={() => setShowTambahLayanan(false)} />
-                    </div>
-                </div>
-            )} */}
-
-            {/* Pop-up Edit Layanan */}
+            {/* Popup Edit Layanan */}
             {showEditLayanan && (
                 <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
-                
-                
-                        <FormEditLayanan onClose={() => setShowEditLayanan(false)} />
-                    
+                    <FormEditLayanan onClose={() => setShowEditLayanan(false)} />
                 </div>
             )}
 
-            {/* Pop-up Tambah Produk */}
+            {/* Popup Tambah Produk */}
             {showTambahProduk && (
                 <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
                     <div className="bg-white rounded-xl shadow-lg p-6 w-[500px] relative">
-                        
                         <FormTambahProduk onClose={() => setShowTambahProduk(false)} />
                     </div>
                 </div>
             )}
 
-            {/* Pop-up Edit Produk */}
+            {/* Popup Edit Produk */}
             {showEditProduk && selectedItem && (
                 <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
-                    
-                        
-                        <FormEditProduk
-                            onClose={() => {
-                                setShowEditProduk(false);
-                                setSelectedItem(null);
-                            }}
-                            item={selectedItem}
-                        />
-                    
+                    <FormEditProduk
+                        onClose={() => {
+                            setShowEditProduk(false);
+                            setSelectedItem(null);
+                        }}
+                        item={selectedItem}
+                    />
                 </div>
             )}
 
+            {/* Pop-up Hapus */}
             {showHapus && (
                 <PopupHapus
                     onClose={() => setShowHapus(false)}
@@ -324,6 +336,7 @@ const LayananProduk = () => {
                 />
             )}
 
+            {/* Pop-up Berhasil */}
             {showBerhasil && (
                 <PopupBD
                     namaProduk={selectedName}
