@@ -1,13 +1,24 @@
 import React, { useState } from "react";
 import { Assets } from '../../assets';
-import FormTambahProduk from "./FormTambahProduk";
-import FormEditProduk from "./FormEditProduk";
+import FormTambahProduk from "../../components/Forms/FormTambahProduk";
+import FormEditProduk from "../../components/Forms/FormEditProduk";
+// import FormTambahLayanan from "../../components/Forms/FormTambahLayanan";
+import FormEditLayanan from "../../components/Forms/FormEditLayanan";
+import PopupHapus from "../../components/Forms/PopupHapus";
+import PopupBD from "../../components/Forms/PopupBD";
 
 const LayananProduk = () => {
     const [activeTab, setActiveTab] = useState("Layanan");
     const [searchQuery, setSearchQuery] = useState("");
+    // const [showTambahLayanan, setShowTambahLayanan] = useState(false);
     const [showTambahProduk, setShowTambahProduk] = useState(false);
     const [showEditProduk, setShowEditProduk] = useState(false);
+    const [showEditLayanan, setShowEditLayanan] = useState(false);
+    const [selectedItem, setSelectedItem] = useState(null);
+    const [showHapus, setShowHapus] = useState(false);
+    const [showBerhasil, setShowBerhasil] = useState(false);
+    const [selectedName, setSelectedName] = useState("");
+
 
     const data = {
         Layanan: [
@@ -123,7 +134,6 @@ const LayananProduk = () => {
                         </div>
                     </div>
 
-
                     {/* Register Admin Button */}
                     <button className="px-6 py-2 bg-[#27D14C] text-white font-semibold font-['Poppins'] rounded-lg hover:bg-[#20b93f] transition shadow-md">
                         Register Admin
@@ -131,11 +141,8 @@ const LayananProduk = () => {
                 </div>
             </div>
 
-
-
-            {/*  */}
+            {/* Tabs */}
             <div className="flex justify-between items-center mb-2">
-                {/* Bagian Tabs */}
                 <div className="flex gap-3">
                     {["Layanan", "Produk"].map((tab) => (
                         <button
@@ -151,10 +158,16 @@ const LayananProduk = () => {
                     ))}
                 </div>
 
-
-                {/* Tombol Tambah Proyek */}
+                {/* Tombol Tambah */}
                 <div className="flex justify-end mb-8 mt-5">
-                    <button onClick={() => setShowTambahProduk(true)}
+                    <button
+                        onClick={() => {
+                            // if (activeTab === "Layanan") {
+                            //     setShowTambahLayanan(true);
+                            // } else {
+                                setShowTambahProduk(true);
+                            // }
+                        }}
                         className="flex items-center gap-2 px-3 py-2 bg-[#1E293B] text-white rounded-lg hover:bg-[#111827] transition"
                     >
                         <svg
@@ -171,70 +184,41 @@ const LayananProduk = () => {
                                 d="M12 4v16m8-8H4"
                             />
                         </svg>
-                        {activeTab === "Layanan" ? "Tambah Layanan" : "Tambah Produk"}
+                        {/* {activeTab === "Layanan" ? "Tambah Layanan" : "Tambah Produk"} */}
+                        Tambah Produk
                     </button>
                 </div>
             </div>
-
-
 
             {/* Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {activeTab === "Layanan"
                     ? filteredData.map((item, idx) => (
-                        <div
-                            key={idx}
-                            className="bg-white rounded-xl p-6 shadow hover:shadow-lg transition"
-                        >
-                            {/* Icon & Title */}
+                        <div key={idx} className="bg-white rounded-xl p-6 shadow hover:shadow-lg transition">
                             <div className="flex items-start justify-between mb-3">
                                 <div className="w-20 h-20 flex items-center justify-center bg-[#E7F4D4] rounded-tr-3xl rounded-bl-3xl">
-                                    <img
-                                        src={item.icon}
-                                        alt={item.title}
-                                        className="w-10 h-10 object-contain"
-                                    />
+                                    <img src={item.icon} alt={item.title} className="w-10 h-10 object-contain" />
                                 </div>
                                 <div className="flex gap-2 text-gray-400">
-                                    <button className="text-[#27D14C] hover:text-green-600">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            className="h-6 w-6"
-                                            fill="none"
-                                            viewBox="0 0 24 24"
-                                            stroke="currentColor"
-                                        >
-                                            <path
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                strokeWidth={2}
-                                                d="M15.232 5.232l3.536 3.536M9 13l6.768-6.768a2 2 0 112.828 2.828L11.828 15.828a2 2 0 01-1.414.586H8v-2.414a2 2 0 01.586-1.414z"
-                                            />
+                                    <button className="text-[#27D14C] hover:text-green-600" onClick={() => setShowEditLayanan(true)}>
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536M9 13l6.768-6.768a2 2 0 112.828 2.828L11.828 15.828a2 2 0 01-1.414.586H8v-2.414a2 2 0 01.586-1.414z" />
                                         </svg>
                                     </button>
-                                    <button className="text-red-500 hover:text-red-600 transition">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            className="h-6 w-6"
-                                            fill="none"
-                                            viewBox="0 0 24 24"
-                                            stroke="currentColor"
-                                        >
-                                            <path
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                strokeWidth={2}
-                                                d="M6 18L18 6M6 6l12 12"
-                                            />
+                                    <button
+                                        className="text-red-500 hover:text-red-600 transition"
+                                        onClick={() => {
+                                            setSelectedName(item.nama);
+                                            setShowHapus(true);
+                                        }}
+                                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                                         </svg>
                                     </button>
                                 </div>
                             </div>
-
-                            {/* Content */}
-                            <h3 className="text-lg font-semibold text-gray-800 mb-3">
-                                {item.title}
-                            </h3>
+                            <h3 className="text-lg font-semibold text-gray-800 mb-3">{item.title}</h3>
                             <ul className="list-disc list-inside text-gray-600 text-sm space-y-1">
                                 {item.points.map((point, i) => (
                                     <li key={i}>{point}</li>
@@ -244,98 +228,108 @@ const LayananProduk = () => {
                     ))
                     :
                     filteredData.map((item, idx) => (
-                        <div
-                            key={idx}
-                            className="bg-white rounded-xl p-5 shadow hover:shadow-lg transition relative"
-                        >
-                            {/* Tombol Edit & Delete */}
+                        <div key={idx} className="bg-white rounded-xl p-5 shadow hover:shadow-lg transition relative">
                             <div className="absolute top-6 right-6 flex gap-2 text-gray-400">
-                                <button className="text-[#27D14C] hover:text-green-600">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        className="h-6 w-6"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                    >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth={2}
-                                            d="M15.232 5.232l3.536 3.536M9 13l6.768-6.768a2 2 0 112.828 2.828L11.828 15.828a2 2 0 01-1.414.586H8v-2.414a2 2 0 01.586-1.414z"
-                                        />
+                                <button
+                                    className="text-[#27D14C] hover:text-green-600"
+                                    onClick={() => {
+                                        setSelectedItem(item);
+                                        setShowEditProduk(true);
+                                    }}
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536M9 13l6.768-6.768a2 2 0 112.828 2.828L11.828 15.828a2 2 0 01-1.414.586H8v-2.414a2 2 0 01.586-1.414z" />
                                     </svg>
                                 </button>
-                                <button className="text-red-500 hover:text-red-600 transition">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        className="h-6 w-6"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                    >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth={2}
-                                            d="M6 18L18 6M6 6l12 12"
-                                        />
+                                <button
+                                    className="text-red-500 hover:text-red-600 transition"
+                                    onClick={() => {
+                                        setSelectedName(item.nama);
+                                        setShowHapus(true);
+                                    }}
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                                     </svg>
                                 </button>
                             </div>
 
-                            {/* Gambar */}
-                            <img
-                                src={item.gambar}
-                                alt={item.nama}
-                                className="w-full h-40 object-cover rounded-lg mb-4"
-                            />
-
-                            {/* Isi Konten */}
-                            <h3 className="text-lg font-semibold text-gray-800 mb-1">
-                                {item.nama}
-                            </h3>
-                            <p className="text-sm text-gray-500 mb-1">
-                                <strong>Mitra:</strong> {item.mitra}
-                            </p>
-                            <p className="text-sm text-gray-500 mb-2">
-                                <strong>Tahun:</strong> {item.tahun}
-                            </p>
+                            <img src={item.gambar} alt={item.nama} className="w-full h-40 object-cover rounded-lg mb-4" />
+                            <h3 className="text-lg font-semibold text-gray-800 mb-1">{item.nama}</h3>
+                            <p className="text-sm text-gray-500 mb-1"><strong>Mitra:</strong> {item.mitra}</p>
+                            <p className="text-sm text-gray-500 mb-2"><strong>Tahun:</strong> {item.tahun}</p>
                             <p className="text-gray-600 text-sm">{item.deskripsi}</p>
                         </div>
                     ))}
             </div>
-            
-            {/* Pop-up Tambah Produk */}
-            {showTambahProduk && (
+
+            {/* Pop-up Tambah Layanan */}
+            {/* {showTambahLayanan && (
                 <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
                     <div className="bg-white rounded-xl shadow-lg p-6 w-[500px] relative">
                         <button
-                            onClick={() => setShowTambahProduk(false)}
+                            onClick={() => setShowTambahLayanan(false)}
                             className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
                         >
                             ✕
                         </button>
+                        <FormTambahLayanan onClose={() => setShowTambahLayanan(false)} />
+                    </div>
+                </div>
+            )} */}
+
+            {/* Pop-up Edit Layanan */}
+            {showEditLayanan && (
+                <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
+                
+                
+                        <FormEditLayanan onClose={() => setShowEditLayanan(false)} />
+                    
+                </div>
+            )}
+
+            {/* Pop-up Tambah Produk */}
+            {showTambahProduk && (
+                <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
+                    <div className="bg-white rounded-xl shadow-lg p-6 w-[500px] relative">
+                        
                         <FormTambahProduk onClose={() => setShowTambahProduk(false)} />
                     </div>
                 </div>
             )}
 
             {/* Pop-up Edit Produk */}
-            {showEditProduk && (
+            {showEditProduk && selectedItem && (
                 <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
-                    <div className="bg-white rounded-xl shadow-lg p-6 w-[500px] relative">
-                        <button
-                            onClick={() => setShowEditProduk(false)}
-                            className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
-                        >
-                            ✕
-                        </button>
-                        <FormEditProduk onClose={() => setShowEditProduk(false)} />
-                    </div>
+                    
+                        
+                        <FormEditProduk
+                            onClose={() => {
+                                setShowEditProduk(false);
+                                setSelectedItem(null);
+                            }}
+                            item={selectedItem}
+                        />
+                    
                 </div>
             )}
 
+            {showHapus && (
+                <PopupHapus
+                    onClose={() => setShowHapus(false)}
+                    onConfirm={() => {
+                        setShowHapus(false);
+                        setShowBerhasil(true);
+                    }}
+                />
+            )}
+
+            {showBerhasil && (
+                <PopupBD
+                    namaProduk={selectedName}
+                    onClose={() => setShowBerhasil(false)}
+                />
+            )}
         </div>
     );
 };

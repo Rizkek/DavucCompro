@@ -1,31 +1,45 @@
 import React from "react";
 
-const FormTambahProduk = ({ onClose }) => {
+const FormEditProduk = ({ item, onClose }) => {
+  if (!item) return null; // jaga-jaga
+
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
-      <div className="bg-white p-6 rounded-xl w-[400px] shadow-lg">
-        <h2 className="text-lg font-semibold mb-2">Tambah Produk Baru</h2>
+      <div className="relative bg-white p-6 rounded-xl w-[400px] shadow-lg">
+        {/* Tombol Close */}
+        <button
+          onClick={onClose}
+          className="absolute top-6 right-8 text-gray-500 hover:text-gray-800 text-lg"
+        >
+          ✕
+        </button>
+
+        <h2 className="text-lg font-semibold mb-2">Edit Produk</h2>
         <p className="text-sm text-gray-500 mb-4">
-          Masukkan informasi produk atau layanan
+          Ubah detail dari produk yang dipilih
         </p>
 
         <form className="space-y-3">
           <input
             type="text"
+            defaultValue={item.nama}
             placeholder="Nama Produk"
             className="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-[#27D14C] outline-none"
           />
           <input
             type="text"
+            defaultValue={item.mitra}
             placeholder="Mitra"
             className="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-[#27D14C] outline-none"
           />
           <input
             type="text"
+            defaultValue={item.tahun}
             placeholder="Tahun"
             className="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-[#27D14C] outline-none"
           />
           <textarea
+            defaultValue={item.deskripsi}
             placeholder="Deskripsi"
             className="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-[#27D14C] outline-none h-20 resize-none"
           ></textarea>
@@ -42,7 +56,7 @@ const FormTambahProduk = ({ onClose }) => {
               type="submit"
               className="px-4 py-1.5 bg-[#27D14C] text-white rounded-lg text-sm hover:bg-[#20b540]"
             >
-              Tambah
+              Simpan
             </button>
           </div>
         </form>
@@ -51,4 +65,4 @@ const FormTambahProduk = ({ onClose }) => {
   );
 };
 
-export default FormTambahProduk;
+export default FormEditProduk;
