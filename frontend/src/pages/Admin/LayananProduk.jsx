@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { Assets } from '../../assets';
+import FormTambahProduk from "./FormTambahProduk";
+import FormEditProduk from "./FormEditProduk";
 
 const LayananProduk = () => {
     const [activeTab, setActiveTab] = useState("Layanan");
     const [searchQuery, setSearchQuery] = useState("");
+    const [showTambahProduk, setShowTambahProduk] = useState(false);
+    const [showEditProduk, setShowEditProduk] = useState(false);
 
     const data = {
         Layanan: [
@@ -75,7 +79,7 @@ const LayananProduk = () => {
     return (
         <div className="min-h-screen bg-[#F5F7FB] px-10 py-8 font-medium font-['Poppins']">
             {/* Header */}
-            <div className="flex justify-between items-center mb-8">
+            <div className="flex justify-between items-center mb-9">
                 <div>
                     <h1 className="text-3xl font-bold text-gray-800 mb-2">
                         Layanan Dan Produk
@@ -130,7 +134,7 @@ const LayananProduk = () => {
 
 
             {/*  */}
-            <div className="flex justify-between items-center mb-8">
+            <div className="flex justify-between items-center mb-2">
                 {/* Bagian Tabs */}
                 <div className="flex gap-3">
                     {["Layanan", "Produk"].map((tab) => (
@@ -149,8 +153,10 @@ const LayananProduk = () => {
 
 
                 {/* Tombol Tambah Proyek */}
-                <div className="flex justify-end mb-8">
-                    <button className="flex items-center gap-2 px-3 py-2 bg-[#1E293B] text-white rounded-lg hover:bg-[#111827] transition">
+                <div className="flex justify-end mb-8 mt-5">
+                    <button onClick={() => setShowTambahProduk(true)}
+                        className="flex items-center gap-2 px-3 py-2 bg-[#1E293B] text-white rounded-lg hover:bg-[#111827] transition"
+                    >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-4 w-4"
@@ -165,7 +171,7 @@ const LayananProduk = () => {
                                 d="M12 4v16m8-8H4"
                             />
                         </svg>
-                        Tambah Proyek
+                        {activeTab === "Layanan" ? "Tambah Layanan" : "Tambah Produk"}
                     </button>
                 </div>
             </div>
@@ -299,6 +305,37 @@ const LayananProduk = () => {
                         </div>
                     ))}
             </div>
+            
+            {/* Pop-up Tambah Produk */}
+            {showTambahProduk && (
+                <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
+                    <div className="bg-white rounded-xl shadow-lg p-6 w-[500px] relative">
+                        <button
+                            onClick={() => setShowTambahProduk(false)}
+                            className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
+                        >
+                            ✕
+                        </button>
+                        <FormTambahProduk onClose={() => setShowTambahProduk(false)} />
+                    </div>
+                </div>
+            )}
+
+            {/* Pop-up Edit Produk */}
+            {showEditProduk && (
+                <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
+                    <div className="bg-white rounded-xl shadow-lg p-6 w-[500px] relative">
+                        <button
+                            onClick={() => setShowEditProduk(false)}
+                            className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
+                        >
+                            ✕
+                        </button>
+                        <FormEditProduk onClose={() => setShowEditProduk(false)} />
+                    </div>
+                </div>
+            )}
+
         </div>
     );
 };

@@ -30,7 +30,7 @@ const Proyek = () => {
     return (
         <div className="min-h-screen bg-[#F5F7FB] px-10 py-8 font-medium font-['Poppins']">
             {/* Header */}
-            <div className="flex justify-between items-center mb-8">
+            <div className="flex justify-between items-center mb-14">
                 <div>
                     <h1 className="text-3xl font-bold text-gray-800 mb-2">
                         Proyek
@@ -83,7 +83,8 @@ const Proyek = () => {
             </div>
 
             {/* Tombol Tambah Proyek */}
-            <div className="flex justify-end mb-8">
+            <div className="flex justify-end mb-8 mt-5">
+                <div></div>
                 <button className="flex items-center gap-2 px-3 py-2 bg-[#1E293B] text-white rounded-lg hover:bg-[#111827] transition">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
