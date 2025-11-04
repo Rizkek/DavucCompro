@@ -176,7 +176,7 @@ const LayananProduk = () => {
                         </button>
                     ))}
                 </div>
-
+            <div className="flex justify-end mb-8 mt-2">
                 <button
                     onClick={() => setShowTambahProduk(true)}
                     className="flex items-center gap-2 px-3 py-2 bg-[#1E293B] text-white rounded-lg hover:bg-[#111827] transition"
@@ -186,6 +186,7 @@ const LayananProduk = () => {
                     </svg>
                     Tambah Produk
                 </button>
+                </div>
             </div>
 
             {/* ✅ FILTER Kategori hanya muncul saat TAB PRODUK */}
