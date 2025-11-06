@@ -78,6 +78,15 @@ export default function About() {
                     </div>
                 </div>
             </section>
+             {/* Wa */}
+            <a
+                href="https://wa.me/6285220203453"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="fixed bottom-8 right-8 w-16 h-16 bg-green-500 rounded-full flex items-center justify-center shadow-2xl z-50 hover:bg-green-600 transition-colors"
+            >
+                <FaWhatsapp size={32} className="text-white" />
+            </a>
         </div>    
     )
 }

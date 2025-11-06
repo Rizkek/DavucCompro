@@ -48,6 +48,13 @@ export default function Home() {
                                 <FaWhatsapp size={24} className="text-white mr-2" />
                                 <span className="text-white text-base font-bold font-['Poppins'] leading-6">Hubungi Kami</span>
                             </Link>
+
+                            {/* Stats Section */}
+                            <div className="w-full flex flex-wrap justify-start gap-8 md:gap-16 mt-12">
+                                {statsData.map((stat, index) => (
+                                    <StatItem key={index} value={stat.value} label={stat.label} />
+                                ))}
+                            </div>
                         </div>
                         
                         {/* Gambar hero */}
@@ -140,13 +147,7 @@ export default function Home() {
                             </div>
                         </div>
 
-                        <div className="w-full bg-zinc-800 rounded-[20px] p-6 md:p-12 shadow-xl">
-                            <div className="grid grid-cols-1 md:grid-cols-3 justify-items-center gap-10">
-                                {statsData.map((stat, index) => (
-                                    <StatItem key={index} value={stat.value} label={stat.label} />
-                                ))}
-                            </div>
-                        </div>
+
                     </div>
                 </section>
 
@@ -213,16 +214,16 @@ const ServiceCard = ({ title, icon }) => {
 };
 
 const StatItem = ({ value, label }) => (
-    <div className="w-full flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center">
         <div className="text-center">
-            <span className="text-white text-5xl md:text-6xl font-semibold font-['Poppins'] leading-tight">
+            <span className="text-lime-500 text-3xl md:text-4xl lg:text-5xl font-semibold font-['Poppins'] leading-tight">
                 {value.slice(0, -1)}
             </span>
-            <span className="text-lime-500 text-5xl md:text-6xl font-semibold font-['Poppins'] leading-tight">
+            <span className="text-lime-500 text-3xl md:text-4xl lg:text-5xl font-semibold font-['Poppins'] leading-tight">
                 {value.slice(-1)}
             </span>
         </div>
-        <div className="text-center text-white text-xl md:text-2xl font-semibold font-['Poppins'] leading-8 mt-1">
+        <div className="text-center text-lime-500 text-base md:text-lg lg:text-xl font-medium font-['Poppins'] leading-relaxed mt-1">
             {label}
         </div>
     </div>

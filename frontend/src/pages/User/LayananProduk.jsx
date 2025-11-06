@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Assets } from '../../assets';
+import { FaWhatsapp } from 'react-icons/fa';
 
 // Data layanan dan produk
 const servicesData = [
@@ -61,7 +62,7 @@ const servicesData = [
 
 // Komponen Kartu Layanan
 const ServiceCard = ({ service }) => (
-  <div className="bg-white rounded-tr-3xl rounded-bl-3xl p-6 shadow-lg hover:shadow-xl transition-all">
+  <div className="bg-white rounded-2xl p-6 shadow-sm transition-all border-r-2 border-l-2 border-b-4">
     <div className="flex items-start gap-4 mb-4">
       <img 
         src={service.icon} 
@@ -130,7 +131,7 @@ export default function LayananProdukSection() {
                 <div className="flex gap-0 mb-12">
                     <button
                         onClick={() => setActiveTab('layanan')}
-                        className={`px-7 py-2.5 rounded-l-[10px] text-xl md:text-2xl font-semibold font-['Poppins'] capitalize transition-all ${
+                        className={`px-8 py-2.5 rounded-l-[10px] text-lg md:text-xl font-semibold font-['Poppins'] capitalize transition-all ${
                             activeTab === 'layanan'
                                 ? 'bg-gradient-to-b from-green-500 to-lime-500 text-white'
                                 : 'bg-white border border-green-500 text-black'
@@ -140,7 +141,7 @@ export default function LayananProdukSection() {
                     </button>
                     <button
                         onClick={() => setActiveTab('produk')}
-                        className={`px-7 py-2.5 rounded-r-[10px] text-xl md:text-2xl font-semibold font-['Poppins'] capitalize transition-all ${
+                        className={`px-7 py-2.5 rounded-r-[10px] text-lg md:text-xl font-semibold font-['Poppins'] capitalize transition-all ${
                             activeTab === 'produk'
                                 ? 'bg-gradient-to-b from-green-500 to-lime-500 text-white'
                                 : 'bg-white border border-green-500 text-black'
@@ -157,6 +158,15 @@ export default function LayananProdukSection() {
                     ))}
                 </div>
             </section>
+            {/* Wa */}
+            <a
+              href="https://wa.me/6285220203453"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="fixed bottom-8 right-8 w-16 h-16 bg-green-500 rounded-full flex items-center justify-center shadow-2xl z-50 hover:bg-green-600 transition-colors"
+            >
+              <FaWhatsapp size={32} className="text-white" />
+            </a>
         </div>    
     )
 }

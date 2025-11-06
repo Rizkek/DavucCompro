@@ -50,7 +50,7 @@ export default function ContactSection() {
                         {/* Alamat */}
                         <div className="flex items-start gap-4 bg-white rounded-lg shadow-sm border-b-4 border-r-4 p-5">
                             <div className="w-12 h-12 bg-gradient-to-b from-lime-500 to-green-500 rounded-full flex items-center justify-center flex-shrink-0">
-                                <MapPin className="text-white w-6 h-6" />
+                                <MapPin className="text-white w-6 h-6 "/>
                             </div>
                             <div>
                                 <h3 className="text-zinc-800 text-xl font-semibold capitalize">
@@ -113,7 +113,7 @@ export default function ContactSection() {
                     />
                 </div>
             </section>
-
+            {/* Wa */}
             <a
                 href="https://wa.me/6285220203453"
                 target="_blank"
