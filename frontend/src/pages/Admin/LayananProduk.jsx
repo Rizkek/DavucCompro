@@ -176,16 +176,16 @@ const LayananProduk = () => {
                         </button>
                     ))}
                 </div>
-            <div className="flex justify-end mb-8 mt-2">
-                <button
-                    onClick={() => setShowTambahProduk(true)}
-                    className="flex items-center gap-2 px-3 py-2 bg-[#1E293B] text-white rounded-lg hover:bg-[#111827] transition"
-                >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                    </svg>
-                    Tambah Produk
-                </button>
+                <div className="flex justify-end mb-8 mt-2">
+                    <button
+                        onClick={() => setShowTambahProduk(true)}
+                        className="flex items-center gap-2 px-3 py-2 bg-[#1E293B] text-white rounded-lg hover:bg-[#111827] transition"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                        </svg>
+                        Tambah Produk
+                    </button>
                 </div>
             </div>
 
@@ -209,8 +209,8 @@ const LayananProduk = () => {
                                     }
                                 }}
                                 className={`px-6 py-2 rounded-full font-semibold border transition ${isActive
-                                        ? "bg-[#27D14C] text-white shadow"
-                                        : "bg-white text-gray-600 hover:bg-gray-50"
+                                    ? "bg-[#27D14C] text-white shadow"
+                                    : "bg-white text-gray-600 hover:bg-gray-50"
                                     }`}
                             >
                                 {filter}
@@ -288,11 +288,26 @@ const LayananProduk = () => {
                                 </button>
                             </div>
 
-                            <img src={item.gambar} alt={item.nama} className="w-full h-40 object-cover rounded-lg mb-4" />
+                            {/* Kategori badge di bagian atas */}
+                            <div className="flex justify-between items-center mb-2">
+                                <span className="inline-block bg-[#27D14C]/10 text-[#27D14C] text-xs font-semibold px-3 py-1 rounded-full">
+                                    {item.kategori}
+                                </span>
+                            </div>
+
+                            {/* Gambar produk */}
+                            <img
+                                src={item.gambar || "https://via.placeholder.com/400x200?text=No+Image"}
+
+                                className="w-full h-40 object-cover rounded-lg mb-4"
+                            />
+
+                            {/* Detail produk */}
                             <h3 className="text-lg font-semibold text-gray-800 mb-1">{item.nama}</h3>
                             <p className="text-sm text-gray-500 mb-1"><strong>Mitra:</strong> {item.mitra}</p>
                             <p className="text-sm text-gray-500 mb-2"><strong>Tahun:</strong> {item.tahun}</p>
                             <p className="text-gray-600 text-sm">{item.deskripsi}</p>
+
                         </div>
                     ))}
             </div>
