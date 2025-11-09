@@ -8,8 +8,8 @@ export default function ContactSection() {
     return (
         <div className="relative w-full bg-white overflow-hidden">
             <header className="relative w-full">
-                {/* Banner image */}
-                <div className="relative w-full h-[470px]">
+                {/* Banner image*/}
+                <div className="relative w-full h-[470px] mt-[90px]">
                     <img
                         src={Assets.Banner4}
                         alt="Latar Belakang Kontak"
@@ -101,7 +101,7 @@ export default function ContactSection() {
                     </div>
                 </div>
                  {/* Map */}
-                <div className="flex-1 w-full lg:w-3/5 flex justify-center lg:justify-end mt-10 lg:mt-0 rounded-xl overflow-hidden border border-border h-[460px]">
+                <div className="flex-1 w-full lg:w-3/5 flex justify-center lg:justify-end mt-10 lg:mt-0 rounded-xl overflow-hidden border border-border h-[470px]">
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3997.006528885579!2d107.68974571062172!3d-6.902019367516907!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e7799d64ea97%3A0x6354e71b8440d24e!2sDivus%20Global%20Mediacomm!5e1!3m2!1sid!2sid!4v1761939450230!5m2!1sid!2sid" 
                         width="100%"

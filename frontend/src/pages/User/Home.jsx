@@ -146,8 +146,6 @@ export default function Home() {
                                 </Link>
                             </div>
                         </div>
-
-
                     </div>
                 </section>
 
@@ -197,7 +195,7 @@ export default function Home() {
 // Kartu Layanan
 const ServiceCard = ({ title, icon }) => {
     return (
-        <div className="w-52 h-52 p-4 bg-white rounded-tr-3xl rounded-bl-3xl flex flex-col justify-center items-center shadow-lg transition-transform hover:scale-105">
+    <div className="w-52 h-52 p-4 bg-white rounded-tr-3xl rounded-bl-3xl flex flex-col justify-center items-center shadow-md transition-transform hover:scale-105 border border-zinc-800">
             <div className="w-full flex flex-col justify-center items-center gap-3">
                 <img 
                     src={icon} 
@@ -205,7 +203,7 @@ const ServiceCard = ({ title, icon }) => {
                     className="w-20 h-20 object-contain mb-2"
                 />
                 
-                <div className=" text-center text-zinc-800 text-sm font-semibold font-['Poppins'] eading-snug px-2 break-words whitespace-normal">
+                <div className="text-center text-zinc-800 text-sm font-semibold font-['Poppins'] leading-snug px-2 break-words whitespace-normal">
                     {title}
                 </div>
             </div>

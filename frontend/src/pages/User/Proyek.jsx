@@ -87,7 +87,7 @@ export default function ProyekSection() {
     <div className="relative w-full bg-white overflow-hidden">
       <header className="relative w-full">
         {/* Banner image */}
-        <div className="relative w-full h-[470px]">
+        <div className="relative w-full h-[470px] mt-[90px]">
           <img
             src={Assets.Banner4}
             alt="Latar Belakang Proyek"

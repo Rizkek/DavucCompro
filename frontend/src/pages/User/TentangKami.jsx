@@ -8,7 +8,7 @@ export default function About() {
         <div className="relative w-full bg-white overflow-hidden">
             <header className="relative w-full">
                 {/* Banner image */}
-                <div className="relative w-full h-[470px]">
+                <div className="relative w-full h-[470px] mt-[90px]">
                     <img
                         src={Assets.Banner2}
                         alt="Latar Belakang About"
