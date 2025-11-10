@@ -188,9 +188,7 @@ export default function Home() {
                                 key={i}
                                 src={ImgClnt}
                                 alt="Client Logo"
-                                className="h-32 w-32 opacity-70 hover:opacity-100 transition-transform duration-300 hover:scale-110"
-                                style={{transform : 'rotate(0deg)'}}
-                                />
+                                className="h-32 w-32 opacity-80 hover:opacity-100 saturate-0 transform hover:scale-110  hover:saturate-100 transition-all duration-500 ease-in-out"                                />
                             ))}
                         </motion.div>
                     </div>

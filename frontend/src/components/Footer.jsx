@@ -21,7 +21,7 @@ export default function Footer() {
     ];
 
     return (
-        <footer className="w-full bg-zinc-800 mt-20">
+        <footer className="w-full bg-zinc-800 ">
             <div className="max-w-[1440px] mx-auto px-6 md:px-20 py-12">
                 
                 {/* Bagian Atas Footer (Konten, Layanan, Kontak) */}

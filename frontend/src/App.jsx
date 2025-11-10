@@ -1,17 +1,18 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
-import Home from './pages/User/Home.jsx';
-import Navbar from './components/navbar.jsx';
-import Footer from './components/Footer.jsx';
-import ContactSection from './pages/User/Contact.jsx'; 
-import AboutMe from './pages/User/TentangKami.jsx';
-import HasilProject from './pages/User/Proyek.jsx';
-import Service from './pages/User/LayananProduk.jsx';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/User/Home.jsx";
+import Navbar from "./components/navbar.jsx";
+import Footer from "./components/Footer.jsx";
+import Footer2 from "./components/Footer2.jsx";
+import ContactSection from "./pages/User/Contact.jsx";
+import AboutMe from "./pages/User/TentangKami.jsx";
+import HasilProject from "./pages/User/Proyek.jsx";
+import Service from "./pages/User/LayananProduk.jsx";
 
 //admin
-import Login from './pages/Admin/LoginAdmin.jsx';
-import Register from './pages/Admin/RegisterAdmin.jsx';
-import DashboardAdmin from './pages/Admin/Dashboard.jsx';
+import Login from "./pages/Admin/LoginAdmin.jsx";
+import Register from "./pages/Admin/RegisterAdmin.jsx";
+import DashboardAdmin from "./pages/Admin/Dashboard.jsx";
 import LayananProduk from "./pages/Admin/LayananProduk.jsx";
 import Proyek from "./pages/Admin/Proyek.jsx";
 import Perusahaan from "./pages/Admin/Perusahaan.jsx";
@@ -37,19 +38,39 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-         {/* Halaman admin (otomatis tampil Sidebar) */}
-        <Route path="/DashboardAdmin" element={<AdminLayout>
+        {/* Halaman admin (otomatis tampil Sidebar) */}
+        <Route
+          path="/DashboardAdmin"
+          element={
+            <AdminLayout>
               <DashboardAdmin />
-            </AdminLayout>} />
-        <Route path="/LayananProduk" element={<AdminLayout>
+            </AdminLayout>
+          }
+        />
+        <Route
+          path="/LayananProduk"
+          element={
+            <AdminLayout>
               <LayananProduk />
-            </AdminLayout>} />
-        <Route path="/ProyekAdmin" element={<AdminLayout>
+            </AdminLayout>
+          }
+        />
+        <Route
+          path="/ProyekAdmin"
+          element={
+            <AdminLayout>
               <Proyek />
-            </AdminLayout>} />
-        <Route path="/Perusahaan" element={<AdminLayout>
+            </AdminLayout>
+          }
+        />
+        <Route
+          path="/Perusahaan"
+          element={
+            <AdminLayout>
               <Perusahaan />
-            </AdminLayout>} />    
+            </AdminLayout>
+          }
+        />
         <Route
           path="/"
           element={
@@ -63,40 +84,40 @@ function App() {
         <Route
           path="/contact"
           element={
-           <>
+            <>
               <Navbar />
               <ContactSection />
-              <Footer />
+              <Footer2 />
             </>
           }
         />
         <Route
           path="/tentang"
-          element= {
+          element={
             <>
               <Navbar />
               <AboutMe />
-              <Footer />
+              <Footer2 />
             </>
           }
         />
         <Route
           path="/proyek"
-          element= {
+          element={
             <>
               <Navbar />
               <HasilProject />
-              <Footer />
+              <Footer2 />
             </>
           }
         />
         <Route
           path="/layanan"
-          element= {
+          element={
             <>
               <Navbar />
               <Service />
-              <Footer />
+              <Footer2 />
             </>
           }
         />

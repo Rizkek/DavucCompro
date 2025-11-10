@@ -59,25 +59,7 @@ export default function About() {
             </section>
 
             {/* CTA Download */}
-            <section className="max-w-[1440px] mx-auto px-6 md:px-20 py-20">
-                <div className="w-full bg-zinc-900 rounded-tr-2xl rounded-bl-2xl p-8 md:p-11 shadow-2xl">
-                    <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-                
-                        <h2 className="text-white text-2xl md:text-4xl font-bold capitalize text-center md:text-left">
-                            Company Profile
-                        </h2>
-                        <a 
-                            href={Assets.CompanyProfilePDF || "#"} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="w-full md:w-96 px-5 py-2.5 bg-white rounded-tr-2xl rounded-bl-2xl inline-flex justify-center items-center gap-3 shadow-lg hover:bg-gray-100 transition-colors"
-                        >
-                            <FaDownload className="w-6 h-6 text-zinc-800" />
-                            <span className="text-zinc-800 text-xl font-bold capitalize">Download</span>
-                        </a>
-                    </div>
-                </div>
-            </section>
+            
              {/* Wa */}
             <a
                 href="https://wa.me/6285220203453"
