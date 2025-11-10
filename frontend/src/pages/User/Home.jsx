@@ -127,23 +127,30 @@ export default function Home() {
                     <div className="w-full">
                         <div className="bg-zinc-800 rounded-[20px] p-6 md:p-12 shadow-xl mb-12">
                             <h3 className="text-center text-white text-3xl lg:text-4xl font-semibold font-['Poppins'] leading-tight mb-8">
-                                Layanan Kami
+                            Layanan Kami
                             </h3>
-                            <div className="flex flex-nowrap justify-between gap-6 px-4">
+
+                            {/* Scroll horizontal di layar kecil */}
+                            <div className="overflow-x-auto">
+                            <div className="flex flex-nowrap gap-6 px-4 md:justify-between md:overflow-visible">
                                 {servicesData.map((item, index) => (
-                                    <ServiceCard key={index} title={item.title} icon={item.icon} />
+                                <div key={index} className="flex-shrink-0 w-[200px] md:w-auto">
+                                    <ServiceCard title={item.title} icon={item.icon} />
+                                </div>
                                 ))}
-                            </div> 
+                            </div>
+                            </div>
+
                             <div className="text-left mt-8">
-                                <Link 
-                                    to="/layanan" 
-                                    className="ml-4 inline-flex items-center bg-white rounded-md px-5 py-2 hover:bg-gray-100 transition-colors"
-                                >
-                                    <span className="justify-start text-zinc-800 text-sm text-center font-medium font-['Poppins'] capitalize mr-1 ">
-                                        Lihat Selengkapnya
-                                    </span>
-                                    <ChevronRight size={16} className="text-zinc-800" />
-                                </Link>
+                            <Link
+                                to="/layanan"
+                                className="ml-4 inline-flex items-center bg-white rounded-md px-5 py-2 hover:bg-gray-100 transition-colors"
+                            >
+                                <span className="justify-start text-zinc-800 text-sm text-center font-medium font-['Poppins'] capitalize mr-1">
+                                Lihat Selengkapnya
+                                </span>
+                                <ChevronRight size={16} className="text-zinc-800" />
+                            </Link>
                             </div>
                         </div>
                     </div>
