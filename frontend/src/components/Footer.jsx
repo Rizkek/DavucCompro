@@ -23,9 +23,7 @@ export default function Footer() {
     return (
         <footer className="w-full bg-zinc-800 ">
             <div className="max-w-[1440px] mx-auto px-6 md:px-20 py-12">
-                
                 {/* Bagian Atas Footer (Konten, Layanan, Kontak) */}
-                {/* Grid responsif: 1 kolom di mobile, 3 kolom di desktop */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-20 pb-12 border-b border-white/20">
                     
                     {/* Kolom 1: Logo & Deskripsi */}

@@ -19,7 +19,7 @@ function Navbar() {
     // ubah language
     const handleLangChange = (lang) => {
         setCurrentLang(lang);
-        setIsLangOpen(false); // Tutup dropdown setelah memilih
+        setIsLangOpen(false);
     };
 
     return (

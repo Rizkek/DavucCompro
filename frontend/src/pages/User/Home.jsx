@@ -107,7 +107,7 @@ export default function Home() {
                             href="https://wa.me/62812345678" 
                             target="_blank" 
                             rel="noopener noreferrer" 
-                            className="absolute -right-2 top-1/2 -translate-y-1/2 w-16 h-16 p-3 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-colors"
+                            className="fixed bottom-8 right-10 -translate-y-1/2 w-16 h-16 p-3 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-colors"
                         >
                             <FaWhatsapp size={32} className="text-white" />
                         </a>

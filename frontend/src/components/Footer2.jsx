@@ -20,7 +20,6 @@ export default function Footer2() {
     },
   ];
 
-  // Konfigurasi dinamis berdasarkan URL
   const getFooterConfig = () => {
     const path = location.pathname;
     
@@ -45,7 +44,7 @@ export default function Footer2() {
         title: "Company Profile",
         buttonText: "Download",
         buttonIcon: FaDownload,
-        buttonLink: "#", // Ganti dengan link PDF Anda
+        buttonLink: "#", 
         isDownload: true
       };
     }
@@ -65,8 +64,8 @@ export default function Footer2() {
 
   return (
     <>
-      {/* SECTION: Company Profile / CTA */}
-      <section className="max-w-[1440px] mx-auto px-6 md:px-20 py-20 mb-[-130px]" style={{ zIndex: 100, position: "relative" }}>
+      {/* CTA */}
+      <section className="max-w-[1440px] mx-auto px-6 md:px-20 py-20 mb-[-130px] z-50 relative" >
         <div className="w-full bg-zinc-900 rounded-tr-2xl rounded-bl-2xl p-8 md:p-11 shadow-2xl">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <h2 className="text-white text-2xl md:text-4xl font-bold capitalize text-center md:text-left">
@@ -87,7 +86,7 @@ export default function Footer2() {
         </div>
       </section>
 
-      {/* FOOTER - height reduced to match navbar */}
+      {/* FOOTER */}
       <footer className="w-full bg-zinc-800 pt-16">
         <div className="max-w-[1440px] mx-auto px-6 md:px-20 py-4">
           {/* Bagian Atas Footer */}
