@@ -20,25 +20,6 @@ export default function Footer2() {
     },
   ];
 
-  const dataFooter = [
-    {
-      text: "Layanan",
-      link: "/layanan",
-    },
-    {
-      text: "Proyek",
-      link: "/proyek",
-    },
-    {
-      text: "Tentang Kami",
-      link: "/tentang",
-    },
-    {
-      text: "Kontak",
-      link: "/contact",
-    },
-  ];
-
   // Konfigurasi dinamis berdasarkan URL
   const getFooterConfig = () => {
     const path = location.pathname;
@@ -95,9 +76,9 @@ export default function Footer2() {
               href={footerConfig.buttonLink}
               target="_blank" 
               rel="noopener noreferrer" 
-              className="w-full md:w-96 px-5 py-2.5 bg-white rounded-tr-2xl rounded-bl-2xl inline-flex justify-center items-center gap-3 shadow-lg hover:bg-gray-100 transition-colors"
+              className="w-full md:w-80 px-5 py-2.5 bg-white rounded-tr-xl rounded-bl-xl inline-flex justify-center items-center gap-3 shadow-lg hover:bg-gray-100 transition-colors"
             >
-              <ButtonIcon className="w-6 h-6 text-zinc-800" />
+              <ButtonIcon className="w-8 h-8 text-zinc-800" />
               <span className="text-zinc-800 text-xl font-bold capitalize">
                 {footerConfig.buttonText}
               </span>
@@ -106,11 +87,11 @@ export default function Footer2() {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="w-full bg-zinc-800 pt-10">
-        <div className="max-w-[1440px] mx-auto px-6 md:px-20 py-12">
+      {/* FOOTER - height reduced to match navbar */}
+      <footer className="w-full bg-zinc-800 pt-16">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-20 py-4">
           {/* Bagian Atas Footer */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-20 pb-12 border-b border-white/20">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12 pb-8">
             {/* Kolom 1: Logo & Deskripsi */}
             <div className="flex flex-col gap-4">
               <img
@@ -129,13 +110,13 @@ export default function Footer2() {
 
             {/* Kolom 2: Layanan */}
             <div>
-              <h4 className="text-white/90 text-xl font-bold font-['Poppins'] capitalize leading-7 mb-4">Layanan</h4>
+              <h4 className="text-white/90 text-xl font-semibold font-['Poppins'] capitalize leading-7 pt-4 mb-4">Layanan</h4>
               <div className="flex flex-col space-y-2">
                 {services.map((service) => (
                   <Link 
                     key={service} 
                     to={`/${service.toLowerCase().replace(/\s/g, "-")}`} 
-                    className="text-white/90 text-base font-normal font-['Poppins'] leading-6 hover:text-lime-500 transition-colors"
+                    className="text-white/90 text-base font-light font-['Poppins'] leading-6 hover:text-lime-500 transition-colors"
                   >
                     {service}
                   </Link>
@@ -145,7 +126,7 @@ export default function Footer2() {
 
             {/* Kolom 3: Kontak */}
             <div>
-              <h4 className="text-white/90 text-xl font-bold font-['Poppins'] capitalize leading-7 mb-4">Kontak</h4>
+              <h4 className="text-white/90 text-xl font-semibold font-['Poppins'] capitalize leading-7 pt-4 mb-4">Kontak</h4>
               <div className="flex flex-col space-y-4">
                 {contacts.map((contact, index) => (
                   <ContactItem key={index} icon={contact.icon} text={contact.text} />
@@ -154,9 +135,11 @@ export default function Footer2() {
             </div>
           </div>
 
+          <div className="w-full border-t border-white/20"></div>
+
           {/* Bagian Bawah Footer */}
           <div className="pt-8 text-center">
-            <p className="text-zinc-300 text-base md:text-xl font-normal font-['Poppins'] capitalize leading-7">
+            <p className="text-zinc-300 text-base md:text-xl font-light font-['Poppins'] capitalize leading--10">
               © 2022 PT Divus Global Mediacomm. All rights reserved.
             </p>
           </div>
@@ -170,6 +153,6 @@ export default function Footer2() {
 const ContactItem = ({ icon: Icon, text }) => (
   <div className="flex justify-start items-start gap-3.5">
     <Icon size={24} className="text-white mt-0.5 min-w-[24px]" />
-    <div className="text-justify text-white text-base font-normal font-['Poppins'] leading-6 flex-1">{text}</div>
+    <div className="text-justify text-white text-base font-light font-['Poppins'] leading-6 flex-1">{text}</div>
   </div>
 );

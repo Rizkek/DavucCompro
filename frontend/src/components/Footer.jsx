@@ -43,13 +43,13 @@ export default function Footer() {
 
                     {/* Kolom 2: Layanan */}
                     <div>
-                        <h4 className="text-white/90 text-xl font-bold font-['Poppins'] capitalize leading-7 mb-4">Layanan</h4>
+                        <h4 className="text-white/90 text-xl font-semibold font-['Poppins'] capitalize leading-7 pt-4 mb-4">Layanan</h4>
                         <div className="flex flex-col space-y-2">
                             {services.map(service => (
                                 <Link 
                                     key={service} 
                                     to={`/${service.toLowerCase().replace(/\s/g, '-')}`} 
-                                    className="text-white/90 text-base font-normal font-['Poppins'] leading-6 hover:text-lime-500 transition-colors"
+                                    className="text-white/90 text-base font-light font-['Poppins'] leading-6 hover:text-lime-500 transition-colors"
                                 >
                                     {service}
                                 </Link>
@@ -59,7 +59,7 @@ export default function Footer() {
 
                     {/* Kolom 3: Kontak */}
                     <div>
-                        <h4 className="text-white/90 text-xl font-bold font-['Poppins'] capitalize leading-7 mb-4">Kontak</h4>
+                        <h4 className="text-white/90 text-xl font-semibold font-['Poppins'] capitalize leading-7 pt-4 mb-4">Kontak</h4>
                         <div className="flex flex-col space-y-4">
                             {contacts.map((contact, index) => (
                                 <ContactItem key={index} icon={contact.icon} text={contact.text} />
@@ -70,7 +70,7 @@ export default function Footer() {
                 
                 {/* Bagian Bawah Footer (Copyright) */}
                 <div className="pt-8 text-center">
-                    <p className="text-zinc-300 text-base md:text-xl font-normal font-['Poppins'] capitalize leading-7">
+                    <p className="text-zinc-300 text-base md:text-xl light font-['Poppins'] capitalize leading-7">
                         Copyright © 2022 PT Divus Global Mediacomm. All rights reserved.
                     </p>
                 </div>
@@ -83,7 +83,7 @@ export default function Footer() {
 const ContactItem = ({ icon: Icon, text }) => (
     <div className="flex justify-start items-start gap-3.5">
         <Icon size={24} className="text-white mt-0.5 min-w-[24px]" />
-        <div className="text-justify text-white text-base font-normal font-['Poppins'] leading-6 flex-1">
+        <div className="text-justify text-white text-base font-light font-['Poppins'] leading-6 flex-1">
             {text}
         </div>
     </div>
