@@ -33,7 +33,7 @@ export default function Home() {
                                 <p className="text-lime-500 text-xl font-medium font-['Poppins'] mt-20">
                                     PT Divus Global Mediacomm
                                 </p>
-                                <h1 className="text-zinc-800 text-4xl lg:text-5xl font-semibold font-['Poppins'] leading-tight">
+                                <h1 className="text-zinc-800 text-3xl lg:text-4xl font-semibold font-['Poppins'] leading-tight">
                                     Tingkatkan Strategi dan Solusi Bisnis Anda!
                                 </h1>
                                 <p className="text-zinc-800 text-base font-normal font-['Poppins'] leading-6 text-justify">
@@ -48,13 +48,6 @@ export default function Home() {
                                 <FaWhatsapp size={24} className="text-white mr-2" />
                                 <span className="text-white text-base font-bold font-['Poppins'] leading-6">Hubungi Kami</span>
                             </Link>
-
-                            {/* Stats Section */}
-                            <div className="w-full flex flex-wrap justify-start gap-8 md:gap-16 mt-12">
-                                {statsData.map((stat, index) => (
-                                    <StatItem key={index} value={stat.value} label={stat.label} />
-                                ))}
-                            </div>
                         </div>
                         
                         {/* Gambar hero */}
@@ -80,19 +73,34 @@ export default function Home() {
                             </div>
                         </div>
                     </div>
-                    <div className="hidden absolute top-[120px] left-0 w-full h-[677px] opacity-10 bg-gray-100 z-0"></div>
-                    
+                    <div className="hidden absolute top-[120px] left-0 w-full h-[677px] opacity-10 bg-gray-100 z-0"></div>  
                 </section>
 
                 {/* Mitra & CTA Bar */}
                 <section className="px-6 md:px-20 py-16">
-                    <div className="flex flex-col lg:flex-row justify-between items-center gap-10 border-b border-gray-200 pb-10">
-                        <h2 className="text-zinc-600 text-xl font-semibold font-['Poppins'] leading-7 w-full lg:w-96 text-center lg:text-left">
-                            Dipercaya <br/>Oleh Mitra Internasional
-                        </h2>
-                        <div className="flex flex-wrap justify-center lg:justify-end items-center gap-10 md:gap-40 w-full lg:w-auto">
-                            <img className="w-40 h-auto" src={Assets.Client12} alt="Mitra A" />
-                            <img className="w-40 h-auto" src={Assets.Client13} alt="Mitra B" />
+                    <div className="flex flex-col md:flex-row justify-start items-start md:items-center gap-8 md:gap-16 mb-12">
+                        {/* Stats */}
+                        <div className="flex gap-4 md:gap-6">
+                            {statsData.map((stat, index) => (
+                                <div key={index} className="flex flex-col items-start gap-1">
+                                    <span className="text-lime-500 text-2xl justify-center md:text-3xl font-semibold font-['Poppins']">
+                                        {stat.value}
+                                    </span>
+                                    <span className="text-lime-500 text-xs md:text-sm font-medium font-['Poppins']">
+                                        {stat.label}
+                                    </span>
+                                </div>
+                            ))}
+                        </div>
+                        {/* Text + Logos */}
+                        <div className="flex flex-col md:flex-row justify-start md:justify-between items-start md:items-center gap-6 md:gap-12 flex-1">
+                            <h2 className="text-zinc-600 text-lg md:text-xl font-semibold font-['Poppins'] leading-6 ml-10 w-full md:w-64">
+                                Dipercaya <br/>Oleh Mitra Internasional
+                            </h2>
+                            <div className="flex gap-4 md:gap-8">
+                                <img className="w-32 h-auto" src={Assets.Client12} alt="Mitra A" />
+                                <img className="w-28 h-auto" src={Assets.Client13} alt="Mitra B" />
+                            </div>
                         </div>
                     </div>
                     
@@ -117,7 +125,7 @@ export default function Home() {
                 {/* Layanan*/}
                 <section className="px-6 md:px-20 py-16">
                     <div className="flex flex-col lg:flex-row justify-between items-start gap-6 lg:gap-12 mb-16">
-                        <h2 className="w-full lg:w-3/5 text-zinc-800 text-3xl lg:text-4xl font-semibold font-['Poppins'] leading-tight">
+                        <h2 className="w-full lg:w-3/5 text-zinc-800 text-2xl lg:text-3xl font-semibold font-['Poppins'] leading-tight">
                             Solusi Tepat untuk Meningkatkan Efektivitas Strategi Bisnis.
                         </h2>
                         <p className="w-full lg:w-2/5 text-justify text-zinc-800 text-base font-normal font-['Poppins'] leading-6">
@@ -216,18 +224,3 @@ const ServiceCard = ({ title, icon }) => {
     );
 };
 
-const StatItem = ({ value, label }) => (
-    <div className="flex flex-col justify-center items-center">
-        <div className="text-center">
-            <span className="text-lime-500 text-3xl md:text-4xl lg:text-5xl font-semibold font-['Poppins'] leading-tight">
-                {value.slice(0, -1)}
-            </span>
-            <span className="text-lime-500 text-3xl md:text-4xl lg:text-5xl font-semibold font-['Poppins'] leading-tight">
-                {value.slice(-1)}
-            </span>
-        </div>
-        <div className="text-center text-lime-500 text-base md:text-lg lg:text-xl font-medium font-['Poppins'] leading-relaxed mt-1">
-            {label}
-        </div>
-    </div>
-);

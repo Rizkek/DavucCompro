@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Assets } from "../../assets";
 
 const Perusahaan = () => {
     const [logo, setLogo] = useState(null);

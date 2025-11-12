@@ -298,7 +298,7 @@ const LayananProduk = () => {
                             {/* Gambar produk */}
                             <img
                                 src={item.gambar || "https://via.placeholder.com/400x200?text=No+Image"}
-
+                                alt="gambar produk"
                                 className="w-full h-40 object-cover rounded-lg mb-4"
                             />
 

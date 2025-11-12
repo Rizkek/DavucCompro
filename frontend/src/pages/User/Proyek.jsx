@@ -155,7 +155,7 @@ export default function ProyekSection() {
           </button>
 
           {showYearDropdown && (
-            <div className="absolute mt-2 right-0 w-36 bg-white rounded-md shadow-lg z-10 border border-zinc-200">
+            <div className="absolute mt-10 right-0 w-36 bg-white rounded-md shadow-lg z-10 border border-zinc-200">
               {years.map((y) => (
                 <button
                   key={y}
@@ -213,7 +213,7 @@ export default function ProyekSection() {
         </div>
 
         {/* Pagination */}
-        <div className="flex items-center justify-center gap-6">
+        <div className="flex items-center justify-center gap-6"> 
           <button
             onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
             disabled={currentPage === 1}
@@ -223,7 +223,7 @@ export default function ProyekSection() {
           </button>
 
             <div className="flex flex-col items-center gap-1">
-              <div className="min-w-[60px] h-10 px-4 py-2 bg-white rounded-lg border border-zinc-300 flex items-center justify-center">
+              <div className="min-w-[90px] h-10 px-4 py-2 bg-white rounded-md border-2  border-zinc-800 flex items-center justify-center mt-6">
                 <span className="text-zinc-800 text-base font-medium font-['Poppins']">{currentPage}</span>
               </div>
               <span className="text-zinc-600 text-sm font-medium font-['Poppins']">Dari {totalPages}</span>
