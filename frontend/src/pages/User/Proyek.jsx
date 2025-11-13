@@ -107,7 +107,7 @@ export default function ProyekSection() {
 
         <div className="w-full bg-zinc-300 py-3 px-6 md:px-20">
           <p className="text-zinc-800 text-base">
-            <Link to="/" className="hover:underline">
+            <Link to="/" className="hover:underline ml-1">
               Beranda
             </Link>
             <span className="text-red-600"> &gt; Proyek</span>
@@ -117,6 +117,9 @@ export default function ProyekSection() {
 
       {/* Section utama */}
       <section className="max-w-[1440px] mx-auto px-6 md:px-20 py-16">
+        <h2 className="text-zinc-800 text-3xl md:text-4xl font-bold font-['Poppins'] capitalize mb-6">
+          Proyek dan Klien kami
+        </h2>
         <p className="text-zinc-700 text-base font-normal font-['Poppins'] leading-relaxed mb-12">
           PT Divus Global Mediacomm telah berpengalaman mengerjakan berbagai proyek, mulai dari
           konsultansi manajemen, studi kelayakan, perencanaan, hingga pengembangan aplikasi dan

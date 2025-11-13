@@ -30,7 +30,7 @@ export default function About() {
 
                 <div className="w-full bg-zinc-300 py-3 px-6 md:px-20">
                     <p className="text-zinc-800 text-base">
-                        <Link to="/" className="hover:underline">
+                        <Link to="/" className="hover:underline ml-1">
                             Beranda
                         </Link>
                         <span className="text-red-600"> &gt; Tentang Kami</span>
